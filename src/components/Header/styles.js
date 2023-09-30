@@ -29,8 +29,9 @@ export const Logo = styled(LogoSVG).attrs(({$color}) => ({
   height: auto;
   max-width: 760px;
   width: 100%;
-
-  /* path {
+  z-index: 1;
+// style="fill:black;fill:black;fill-opacity:1;"
+  path {
     fill: inherit;
-  } */
+  }
 `;
