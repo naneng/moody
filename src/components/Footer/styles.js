@@ -1,7 +1,11 @@
 import styled from "styled-components";
-import { Marginals } from "../../styles";
+import { Marginals } from "../Header/styles";
 
-export const Footer = styled.footer`
+export const Footer = styled.footer.attrs(({ $color }) => ({
+  style: {
+    color: `${$color}`
+  }
+}))`
   ${Marginals}
   bottom: 0;
   justify-content: space-between;
@@ -32,7 +36,7 @@ export const H2Middle = styled(H2)`
 
   &::after {
     content: "";
-    background-color: #fbfbfb;
+    background-color: ${({$color}) => $color};
     display: block;
     position: absolute;
     height: 2px;
@@ -42,7 +46,7 @@ export const H2Middle = styled(H2)`
   }
 `;
 
-export const P = styled.p`
+export const H3 = styled.h3`
   font-size: 10px;
   text-align: center;
   position: fixed;

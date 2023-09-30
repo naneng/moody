@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ImgBox from "./components/ImgBox";
-import Modal from "./components/Modal";
-import ModalInner from "./components/ModalInner";
-import { GlobalStyle, ImageContainer, Wrapper, Button } from "./styles";
+import ColorPicker from "./components/ColorPicker";
+import { GlobalStyle, ImageContainer, Wrapper } from "./styles";
 
 // prettier-ignore
 const matrix = [
@@ -18,7 +17,8 @@ const matrix = [
 
 const App = () => {
   const [distance, setDistance] = useState(1);
-  const [showModal, setShowModal] = useState(false);
+  const [wrapperColor, setWrapperColor] = useState('#ebafab');
+  const [textColor, setTextColor] = useState('#000000');
 
   const easing = (num) => Math.pow(num, 3);
 
@@ -29,7 +29,6 @@ const App = () => {
     const distance = hypot / maxHypot;
     const easeDistance = easing(distance);
     setDistance(easeDistance);
-    //setDistance(distance);
   };
 
   const handleMove = ({ clientX, clientY }) => {
@@ -40,27 +39,24 @@ const App = () => {
     calculateDistance([touches[0].clientX, touches[0].clientY]);
   };
 
-  const toggleModal = () => {
-    setShowModal((showModal) => !showModal);
-  };
 
   return (
     <>
       <GlobalStyle />
-      {showModal && (
-        <Modal toggleModal={toggleModal}>
-          <ModalInner />
-        </Modal>
-      )}
-      <Header />
-      <Footer />
+      <Header textColor={textColor} />
+      <Footer textColor={textColor} />
+      <ColorPicker
+        textColor={textColor}
+        setTextColor={setTextColor}
+        wrapperColor={wrapperColor}
+        setWrapperColor={setWrapperColor}
+      />
       <Wrapper
         onMouseMove={handleMove}
         onTouchMove={handleTouchMove}
-        $color={Math.round(240 - distance * 40)}
+        $color={wrapperColor}
       >
-        <ImageContainer $isTogether={distance < 0.002}>
-          <Button onClick={toggleModal}>Sign up for updates</Button>
+        <ImageContainer $isTogether={distance < 0.001}>
           {matrix.map(([x, y], index) => (
             <ImgBox key={index} x={x} y={y} percent={distance} />
           ))}

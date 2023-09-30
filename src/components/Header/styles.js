@@ -1,6 +1,15 @@
-import styled from "styled-components";
-import { ReactComponent as LogoSVG } from "./logo.svg";
-import { Marginals } from "../../styles";
+import styled, { css } from "styled-components";
+import { ReactComponent as LogoSVG } from "./MOODYPlant.svg";
+
+
+export const Marginals = css`
+  box-sizing: border-box;
+  display: flex;
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+`
 
 export const Header = styled.header`
   ${Marginals}
@@ -12,8 +21,16 @@ export const Header = styled.header`
   }
 `;
 
-export const Logo = styled(LogoSVG)`
+export const Logo = styled(LogoSVG).attrs(({$color}) => ({
+  style: {
+    fill: `${$color}`
+  }
+}))`
   height: auto;
   max-width: 760px;
   width: 100%;
+
+  /* path {
+    fill: inherit;
+  } */
 `;

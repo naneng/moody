@@ -1,12 +1,12 @@
 import React from "react";
-import { Footer, H2, H2Middle, P } from "./styles";
+import { Footer, H2, H2Middle, H3 } from "./styles";
 
-const FooterComponent = () => (
-  <Footer>
-    <H2>June 12</H2>
-    <H2Middle>World Tour</H2Middle>
-    <H2>Aug 12</H2>
-    <P>Copyrights 2023 Katrina Ariola. All rights reserved.</P>
+const FooterComponent = ({textColor}) => (
+  <Footer $color={textColor}>
+    <H2>Left</H2>
+    <H2Middle $color={textColor} >Sway</H2Middle>
+    <H2>Right</H2>
+    <H3>Copyrights 2023 Katrina Ariola. All rights reserved.</H3>
   </Footer>
 );
 
