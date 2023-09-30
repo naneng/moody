@@ -25,7 +25,7 @@ export const H2 = styled.h2`
 
   @media (max-width: 700px) {
     font-size: 24px;
-    padding: 0;
+    padding: 0 0 15px 0;
   }
 `;
 
@@ -53,4 +53,9 @@ export const H3 = styled.h3`
   bottom: 0px;
   left: 50%;
   transform: translate(-50%);
+
+  @media (max-width: 490px) {
+    font-size: 8px;
+    padding: 0 auto;
+  }
 `;
